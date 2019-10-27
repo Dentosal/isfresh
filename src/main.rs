@@ -16,6 +16,10 @@ struct Opt {
 
     /// Input files, globs accepted
     inputs: Vec<String>,
+
+    /// Inverts the exit code, i.e. returns 1 for fresh and 0 for dirty
+    #[structopt(short, long)]
+    not: bool,
 }
 
 fn time_modified(p: &Path) -> SystemTime {
@@ -47,11 +51,9 @@ fn main() {
         .max()
         .expect("No input files found");
 
-    exit(if out_mod >= ins_mod {
-        // Fresh
+    exit(if (out_mod >= ins_mod) != opt.not {
         0
     } else {
-        // Not fresh
         1
     });
 }
