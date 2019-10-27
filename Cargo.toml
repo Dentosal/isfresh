@@ -1,0 +1,9 @@
+[package]
+name = "isfresh"
+version = "0.1.0"
+authors = ["Hannes Karppila <hannes.karppila@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+structopt = "0.3"
+glob = "0.3.0"
